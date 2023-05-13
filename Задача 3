@@ -1,0 +1,16 @@
+from math import ceil
+import sys
+ 
+ 
+data = list(map(str.strip, sys.stdin))
+people = dict()
+ 
+for x in data:
+    city, _, pop = x.split()
+    pop = int(ceil(int(pop) / 100000)) * 100
+    people[pop] = people.get(pop, []) + [city]
+ 
+people2 = sorted(people.items())
+ 
+for k, v in people2: 
+    print(int(k) - 100, '-', str(k) + ':', ", ".join(sorted(v)))
